@@ -1,2 +1,2 @@
-# LeetCode-Go
-用Go刷LeetCode的解题记录
+# algorithm-go
+go语言实现各种算法的代码仓库。
