@@ -6,10 +6,7 @@ package leetcode
 // 示例
 // 给定 1->2->3->4, 你应该返回 2->1->4->3.
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+
 
 // 思路1：维护三个指针，分别为当前结点c，前一个结点p，后一个结点n，然后对三个节点进行操作：
 // 1：p的下一个结点指向n的下一个结点

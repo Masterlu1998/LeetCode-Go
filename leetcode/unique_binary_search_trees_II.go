@@ -22,11 +22,7 @@ package leetcode
 
 // 思路1：自下而上返回左子树与右子树不同可能性的根节点，然后将根节点组合排列。
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+
 
 var mask []bool
 
