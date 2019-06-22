@@ -6,8 +6,6 @@ package leetcode
 // 示例
 // 给定 1->2->3->4, 你应该返回 2->1->4->3.
 
-
-
 // 思路1：维护三个指针，分别为当前结点c，前一个结点p，后一个结点n，然后对三个节点进行操作：
 // 1：p的下一个结点指向n的下一个结点
 // 2：c的下一个结点指向p
@@ -52,24 +50,24 @@ func swapPairsFunc1(head *ListNode) *ListNode {
 // 6：重复上述步骤直到c为空或者c的下一个为空时结束循环
 
 func swapPairsFunc2(head *ListNode) *ListNode {
-    if head == nil || head.Next == nil {
-        return head
-    }
-    
-    newHead := new(ListNode)
-    newHead.Next = head
-    
-    c := newHead.Next
-    p := newHead
-    for c != nil && c.Next != nil {
-        n := c.Next
-        c.Next = n.Next
-        n.Next = c
-        p.Next = n
-        
-        p = c
-        c = c.Next
-    }
-    
-    return newHead.Next
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	newHead := new(ListNode)
+	newHead.Next = head
+
+	c := newHead.Next
+	p := newHead
+	for c != nil && c.Next != nil {
+		n := c.Next
+		c.Next = n.Next
+		n.Next = c
+		p.Next = n
+
+		p = c
+		c = c.Next
+	}
+
+	return newHead.Next
 }

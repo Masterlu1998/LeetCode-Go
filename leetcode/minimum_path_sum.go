@@ -19,62 +19,61 @@ package leetcode
 var cacheMin map[[2]int]int
 
 func minPathSumFunc1(grid [][]int) int {
-    cacheMin = make(map[[2]int]int)
-    return _minPathSumFunc1(grid, len(grid[0])-1, len(grid)-1)
+	cacheMin = make(map[[2]int]int)
+	return _minPathSumFunc1(grid, len(grid[0])-1, len(grid)-1)
 }
 
 func _minPathSumFunc1(grid [][]int, x, y int) int {
-    if val, ok := cacheMin[[2]int{x, y}]; ok {
-        return val
-    }
-    
-    if x == 0 {
-        result := 0
-        for i := 0; i <= y; i++ {
-            result+=grid[i][0]
-        }
-        return result
-    }
-    
-    if y == 0 {
-        result := 0
-        for i := 0; i <= x; i++ {
-            result += grid[0][i]
-        }
-        return result
-    }
-    result := grid[y][x] + min(_minPathSumFunc1(grid, x-1, y), _minPathSumFunc1(grid, x, y-1))
-    cacheMin[[2]int{x, y}] = result
-    return result
+	if val, ok := cacheMin[[2]int{x, y}]; ok {
+		return val
+	}
+
+	if x == 0 {
+		result := 0
+		for i := 0; i <= y; i++ {
+			result += grid[i][0]
+		}
+		return result
+	}
+
+	if y == 0 {
+		result := 0
+		for i := 0; i <= x; i++ {
+			result += grid[0][i]
+		}
+		return result
+	}
+	result := grid[y][x] + min(_minPathSumFunc1(grid, x-1, y), _minPathSumFunc1(grid, x, y-1))
+	cacheMin[[2]int{x, y}] = result
+	return result
 }
 
 // 非递归实现
 
 func minPathSumFunc2(grid [][]int) int {
-    width := len(grid[0])
-    height := len(grid)
-    matrix := make([][]int, height)
-    // 初始化边界值
-    temp := 0
-    for i := 0; i < width; i++ {
-        temp += grid[0][i]
-        matrix[0] = append(matrix[0], temp)
-    }
-    
-    temp = grid[0][0]
-    for j := 1; j < height; j++ {
-        temp += grid[j][0]
-        matrix[j] = make([]int, width)
-        matrix[j][0] = temp
-    }
-    
-    
-    // 动态规划
-    for i := 1; i < height; i++ {
-        for j := 1; j < width; j++ {
-            matrix[i][j] = grid[i][j] + min(matrix[i-1][j], matrix[i][j-1])
-        }
-    }
-    
-    return matrix[height-1][width-1]
+	width := len(grid[0])
+	height := len(grid)
+	matrix := make([][]int, height)
+	// 初始化边界值
+	temp := 0
+	for i := 0; i < width; i++ {
+		temp += grid[0][i]
+		matrix[0] = append(matrix[0], temp)
+	}
+
+	temp = grid[0][0]
+	for j := 1; j < height; j++ {
+		temp += grid[j][0]
+		matrix[j] = make([]int, width)
+		matrix[j][0] = temp
+	}
+
+	// 动态规划
+	for i := 1; i < height; i++ {
+		for j := 1; j < width; j++ {
+			matrix[i][j] = grid[i][j] + min(matrix[i-1][j], matrix[i][j-1])
+		}
+	}
+
+	return matrix[height-1][width-1]
 }

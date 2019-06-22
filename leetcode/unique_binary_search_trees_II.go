@@ -22,8 +22,6 @@ package leetcode
 
 // 思路1：自下而上返回左子树与右子树不同可能性的根节点，然后将根节点组合排列。
 
-
-
 var mask []bool
 
 func generateTrees(n int) []*TreeNode {
@@ -37,11 +35,11 @@ func generateTrees(n int) []*TreeNode {
 func _generateTrees(left, right int) []*TreeNode {
 	res := []*TreeNode{nil}
 
-	for i := left ; i <= right; i++ {
+	for i := left; i <= right; i++ {
 		if !mask[i] {
 			mask[i] = true
-			leftBranch := _generateTrees(left, i - 1)
-			rightBranch := _generateTrees(i + 1, right)
+			leftBranch := _generateTrees(left, i-1)
+			rightBranch := _generateTrees(i+1, right)
 			for _, leftNode := range leftBranch {
 				for _, rightNode := range rightBranch {
 					root := &TreeNode{i, leftNode, rightNode}
@@ -49,7 +47,7 @@ func _generateTrees(left, right int) []*TreeNode {
 				}
 			}
 			mask[i] = false
-		} 
+		}
 	}
 
 	if len(res) > 1 {

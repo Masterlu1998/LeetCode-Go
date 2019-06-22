@@ -61,9 +61,10 @@ func flattenFunc1(root *TreeNode) {
 // 思路2：递归遍历二叉树，设置全局变量为遍历的最后一个节点，每次在这个节点右边增加子树
 
 var lastNode *TreeNode
+
 func flattenFunc2(root *TreeNode) {
 	if root == nil {
-		return 
+		return
 	}
 	_flattenFunc2(root)
 }

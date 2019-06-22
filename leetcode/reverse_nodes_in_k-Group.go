@@ -84,38 +84,38 @@ func next(node *ListNode, k int) *ListNode {
 
 // 思路2：递归实现，需要判断剩下的链表长度能不能进行一次转换
 
- func reverseKGroupFunc2(head *ListNode, k int) *ListNode {
-    return reversePartFunc2(head, k)
+func reverseKGroupFunc2(head *ListNode, k int) *ListNode {
+	return reversePartFunc2(head, k)
 }
 
 func reversePartFunc2(node *ListNode, k int) *ListNode {
-    if node == nil {
-        return nil
-    }
-    if valid(node, k) {
-        cur := node.Next
-        prev := node
-        prev.Next = nil
-        tail := node
-        for i := 1; i < k; i++ {
-            next := cur.Next
-            cur.Next = prev
-            prev = cur
-            cur = next
-        }
+	if node == nil {
+		return nil
+	}
+	if valid(node, k) {
+		cur := node.Next
+		prev := node
+		prev.Next = nil
+		tail := node
+		for i := 1; i < k; i++ {
+			next := cur.Next
+			cur.Next = prev
+			prev = cur
+			cur = next
+		}
 
-        tail.Next = reversePartFunc2(cur, k)
-        return prev
-    }
-    return node
+		tail.Next = reversePartFunc2(cur, k)
+		return prev
+	}
+	return node
 }
 
 func valid(node *ListNode, k int) bool {
-    for i := 1; i < k; i++ {
-        node = node.Next
-        if node == nil {
-            return false
-        }
-    }
-    return true
+	for i := 1; i < k; i++ {
+		node = node.Next
+		if node == nil {
+			return false
+		}
+	}
+	return true
 }
