@@ -11,6 +11,10 @@ type Node struct {
 	right *Node
 }
 
+type no struct {
+	next *no
+}
+
 // BuildTree - 构造一颗完全二叉树，返回根节点
 func BuildTree(valSli []int) *Node {
 	tempSli := make([]int, len(valSli), cap(valSli))
@@ -48,6 +52,7 @@ func FindAll(root *Node) {
 
 // 深度优先遍历二叉树（中序非递归）
 func FindAllMiddle(root *Node) {
+
 	stack := make([]*Node, 0)
 	node := root
 
