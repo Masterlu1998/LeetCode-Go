@@ -19,3 +19,11 @@ func min(left, right int) int {
     }
     return right
 }
+
+func sum(p []int) int {
+    result := 0
+    for i := 0; i < len(p); i++ {
+        result += p[i]
+    }
+    return result
+}

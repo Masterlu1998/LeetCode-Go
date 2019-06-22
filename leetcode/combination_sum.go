@@ -80,14 +80,6 @@ func isSame(nums1, nums2 []int) bool {
     return true
 }
 
-func sum(nums []int) int {
-    result := 0
-    for _, val := range nums {
-       result += val 
-    }
-    return result
-}
-
 // 思路2：优化回溯方法，每次回溯从当前索引开始防止重复的情况发生，除去查重所带来的额外开销。
 
 var resultCan [][]int
