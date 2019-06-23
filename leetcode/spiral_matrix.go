@@ -59,7 +59,6 @@ func spiralOrder(matrix [][]int) []int {
                 return result
             }
         }
-        
         width--
         
         for i := 0; i < width; i++ {
@@ -69,7 +68,6 @@ func spiralOrder(matrix [][]int) []int {
                 return result
             }
         }
-        
         height--
 
         for i := 0; i < height; i++ {
@@ -79,7 +77,6 @@ func spiralOrder(matrix [][]int) []int {
                 return result
             }
         }
-        
         width--
     }
 }
