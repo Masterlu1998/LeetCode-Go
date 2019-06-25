@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"algorithm/codinginterviews"
+	
 )
 
 func main() {
-	fmt.Println(9 & 8)
+	codinginterviews.TestPrintToMaxOfNDigits()
 }
