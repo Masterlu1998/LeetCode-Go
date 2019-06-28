@@ -1,10 +1,13 @@
 package main
 
 import (
-	"algorithm/codinginterviews"
-	
+	"fmt"
 )
 
 func main() {
-	codinginterviews.TestPrintToMaxOfNDigits()
+	p := []int{1, 5, 4, 7, 3, 7}
+
+	a := append(p[:1], p[2:]...)
+	
+	fmt.Println(p, a)
 }
