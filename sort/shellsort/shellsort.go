@@ -10,9 +10,9 @@ func Sort(sli []int) []int {
 	for gep := length / 2; gep > 0; gep /= 2 {
 		// 给每个子序列进行插值排序
 		for i := gep; i < length; i++ {
-			for j := i - gep; j >=0; j-=gep {
-				if (tempSli[j] > tempSli[j + gep]) {
-					tempSli[j], tempSli[j + gep] = tempSli[j + gep], tempSli[j]
+			for j := i - gep; j >= 0; j -= gep {
+				if tempSli[j] > tempSli[j+gep] {
+					tempSli[j], tempSli[j+gep] = tempSli[j+gep], tempSli[j]
 				}
 			}
 		}
