@@ -95,15 +95,14 @@ func AdjacencyMatrixBFS(points []int, table [][]int) {
 
 	for i := 0; i < len(points); i++ {
 		if !visited[i] {
+			visited[i] = true
 			q.enQueue(points[i])
 			for len(*q) != 0 {
 				cur := q.deQueue()
-				if !visited[cur] {
-					visited[cur] = true
-					fmt.Println(cur)
-				}
+				fmt.Println(cur)
 				for j := 0; j < len(points); j++ {
-					if table[i][j] == 1 && !visited[j] {
+					if table[cur][j] == 1 && !visited[j] {
+						visited[j] = true
 						q.enQueue(points[j])
 					}
 				}
@@ -139,16 +138,15 @@ func AdjacencyTableBFS(table []*UndirectedNode) {
 
 	for _, node := range table {
 		if !visited[node.Index] {
+			visited[node.Index] = true
 			q.enNodeQueue(node)
 			for len(*q) != 0 {
 				cur := q.deQueue()
-				if !visited[cur.Index] {
-					fmt.Println(cur.Index)
-					visited[cur.Index] = true
-				}
+				fmt.Println(cur.Index)
 
-				for cur.Next != nil {
+				for cur.Next != nil && !visited[cur.Index] {
 					cur = cur.Next
+					visited[cur.Index] = true
 					q.enNodeQueue(cur)
 				}
 			}
