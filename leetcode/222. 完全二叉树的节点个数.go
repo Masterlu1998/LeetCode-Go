@@ -73,7 +73,7 @@ func countNodesFunc2(root *TreeNode) int {
 		return intPow(2, rightHeight) - 1
 	}
 
-	return 1 + countNodes(root.Left) + countNodes(root.Right)
+	return 1 + countNodesFunc2(root.Left) + countNodesFunc2(root.Right)
 }
 
 func intPow(x, y int) int {
