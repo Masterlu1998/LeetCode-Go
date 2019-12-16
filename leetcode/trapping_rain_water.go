@@ -61,7 +61,7 @@ func trapFunc2(height []int) int {
 				break
 			}
 			distance := cur - stack[len(stack)-1] - 1
-			realHeight := min(height[cur], height[stack[len(stack)-1]]) - height[top]
+			realHeight := Min(height[cur], height[stack[len(stack)-1]]) - height[top]
 			result += distance * realHeight
 		}
 		stack = append(stack, cur)

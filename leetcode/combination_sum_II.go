@@ -9,7 +9,7 @@ import (
 // candidates 中的每个数字在每个组合中只能使用一次。
 // 说明：
 // 所有数字（包括目标数）都是正整数。
-// 解集不能包含重复的组合。 
+// 解集不能包含重复的组合。
 // 示例 1:
 // 输入: candidates = [10,1,2,7,6,1,5], target = 8,
 // 所求解集为:
@@ -30,29 +30,27 @@ import (
 var resultCom2 [][]int
 
 func combinationSum2(candidates []int, target int) [][]int {
-    resultCom2 = make([][]int, 0)
-    sort.Ints(candidates)
-    _combinationSum2(candidates, []int{}, target, 0)
-    return resultCom2
+	resultCom2 = make([][]int, 0)
+	sort.Ints(candidates)
+	_combinationSum2(candidates, []int{}, target, 0)
+	return resultCom2
 }
 
 func _combinationSum2(cadidates, temp []int, target, index int) {
-    if sum(temp) > target {
-        return
-    }
-    if sum(temp) == target {
-        final := make([]int, len(temp))
-        copy(final, temp)
-        resultCom2 = append(resultCom2, final)
-        return
-    }
-    
-    for i := index; i < len(cadidates); i++ {
-        if i > index && cadidates[i] == cadidates[i-1] {
-            continue
-        }
-        _combinationSum2(cadidates, append(temp, cadidates[i]), target, i+1)
-    }
+	if Sum(temp) > target {
+		return
+	}
+	if Sum(temp) == target {
+		final := make([]int, len(temp))
+		copy(final, temp)
+		resultCom2 = append(resultCom2, final)
+		return
+	}
+
+	for i := index; i < len(cadidates); i++ {
+		if i > index && cadidates[i] == cadidates[i-1] {
+			continue
+		}
+		_combinationSum2(cadidates, append(temp, cadidates[i]), target, i+1)
+	}
 }
-
-

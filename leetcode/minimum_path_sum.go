@@ -13,7 +13,7 @@ package leetcode
 // 输出: 7
 // 解释: 因为路径 1→3→1→1→1 的总和最小。
 
-// 思路1：动态规划，状态转移方程：f(x, y) = grid[y][x] + min(f(x-1, y), f(x, y-1))，当x=0或y=0的时候
+// 思路1：动态规划，状态转移方程：f(x, y) = grid[y][x] + Min(f(x-1, y), f(x, y-1))，当x=0或y=0的时候
 // 为边界，值为x=0或y=0时，到y或x的所有数之和。有递归和非递归实现。
 
 var cacheMin map[[2]int]int
@@ -43,7 +43,7 @@ func _minPathSumFunc1(grid [][]int, x, y int) int {
 		}
 		return result
 	}
-	result := grid[y][x] + min(_minPathSumFunc1(grid, x-1, y), _minPathSumFunc1(grid, x, y-1))
+	result := grid[y][x] + Min(_minPathSumFunc1(grid, x-1, y), _minPathSumFunc1(grid, x, y-1))
 	cacheMin[[2]int{x, y}] = result
 	return result
 }
@@ -71,7 +71,7 @@ func minPathSumFunc2(grid [][]int) int {
 	// 动态规划
 	for i := 1; i < height; i++ {
 		for j := 1; j < width; j++ {
-			matrix[i][j] = grid[i][j] + min(matrix[i-1][j], matrix[i][j-1])
+			matrix[i][j] = grid[i][j] + Min(matrix[i-1][j], matrix[i][j-1])
 		}
 	}
 
