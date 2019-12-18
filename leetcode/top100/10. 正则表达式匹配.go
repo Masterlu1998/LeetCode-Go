@@ -1,4 +1,4 @@
-package leetcode
+package top100
 
 // 给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。
 //
@@ -56,9 +56,9 @@ func isMatchFunc1(s string, p string) bool {
 
 	if len(p) >= 2 && p[1] == '*' {
 		return isFirstMatch && isMatchFunc1(s[1:], p) || isMatchFunc1(s, p[2:])
-	} else {
-		return isFirstMatch && isMatchFunc1(s[1:], p[1:])
 	}
+
+	return isFirstMatch && isMatchFunc1(s[1:], p[1:])
 }
 
 // 思路2：加入备忘录，加速递归速度
