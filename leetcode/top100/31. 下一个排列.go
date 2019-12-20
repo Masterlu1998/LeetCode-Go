@@ -16,7 +16,6 @@ package top100
 // 2. 从右侧找到第一个比该数字大的数，交换，该位为当前最小值
 // 3. 反转右侧数组，最大变为最小。此时数组为当前的下一个排列
 
-// TODO: 做的晕晕乎乎的，明天再来一次 2019.12.19
 func nextPermutation(nums []int) {
 	i := len(nums) - 2
 	for i >= 0 && nums[i+1] <= nums[i] {
