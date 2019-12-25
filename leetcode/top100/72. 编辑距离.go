@@ -57,34 +57,27 @@ func _minDistance(i, j int) int {
 }
 
 func minDistance(word1 string, word2 string) int {
-	cache := make([][]int, len(word1)+1)
+	height, width := len(word1)+1, len(word2)+1
+	cache := make([][]int, height)
 
-	for i := 0; i < len(word1)+1; i++ {
-		cache[i] = make([]int, len(word2)+1)
+	for i := 0; i < height; i++ {
+		cache[i] = make([]int, width)
 		cache[i][0] = i
 	}
 
-	for i := 0; i < len(word2)+1; i++ {
+	for i := 0; i < width; i++ {
 		cache[0][i] = i
 	}
 
-	for i := 1; i < len(word1)+1; i++ {
-		for j := 1; j < len(word2)+1; j++ {
+	for i := 1; i < height; i++ {
+		for j := 1; j < width; j++ {
 			if word1[i-1] == word2[j-1] {
 				cache[i][j] = cache[i-1][j-1]
 			} else {
-				cache[i][j] = min(min(cache[i-1][j-1]+1, cache[i-1][j]+1), cache[i][j-1]+1)
+				cache[i][j] = min(min(cache[i-1][j-1]+1, cache[i][j-1]+1), cache[i-1][j]+1)
 			}
 		}
 	}
 
-	return cache[len(word1)][len(word2)]
-}
-
-func min(left, right int) int {
-	if left < right {
-		return left
-	}
-
-	return right
+	return cache[height-1][width-1]
 }
