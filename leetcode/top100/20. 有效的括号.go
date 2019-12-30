@@ -31,33 +31,33 @@ package top100
 
 // 思路：用栈实现，不多说，基础
 
-type stack []byte
+type stack20 []byte
 
-func NewStack() *stack {
-	s := stack(make([]byte, 0))
+func NewStack20() *stack20 {
+	s := stack20(make([]byte, 0))
 	return &s
 }
 
-func (s *stack) Get() byte {
+func (s *stack20) Get() byte {
 	return (*s)[len(*s)-1]
 }
 
-func (s *stack) Pop() byte {
+func (s *stack20) Pop() byte {
 	result := (*s)[len(*s)-1]
 	*s = (*s)[:len(*s)-1]
 	return result
 }
 
-func (s *stack) Push(char byte) {
+func (s *stack20) Push(char byte) {
 	*s = append(*s, char)
 }
 
-func (s *stack) IsEmpty() bool {
+func (s *stack20) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 func isValid(s string) bool {
-	st := NewStack()
+	st := NewStack20()
 	for i := 0; i < len(s); i++ {
 
 		char := s[i]
