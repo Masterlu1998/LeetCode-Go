@@ -50,6 +50,7 @@ func _combinationSum(candidates []int, temp []int, sum int) {
 	}
 
 	for i, val := range candidates {
+		// 从当前位置开始，避免回溯
 		_combinationSum(candidates[i:], append(temp, val), sum+val)
 	}
 }
