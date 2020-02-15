@@ -53,11 +53,3 @@ func lengthOfLongestSubstringFunc2(s string) int {
 
 	return result
 }
-
-func max(left, right int) int {
-	if left > right {
-		return left
-	}
-
-	return right
-}
