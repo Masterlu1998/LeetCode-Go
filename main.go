@@ -1,10 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	a := "3"
-	b := "25"
-
-	fmt.Println(a > b)
+	a := "  asdf asdfa dd"
+	strings.Join()
+	fmt.Println(strings.Split(a, " "))
 }

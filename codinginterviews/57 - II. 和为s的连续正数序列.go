@@ -21,16 +21,18 @@ package codinginterviews
 // 1 <= target <= 10^5
 
 func findContinuousSequence(target int) [][]int {
-	left, right := 0, 0
+	left, right := 0, 1
 
 	dp := make([]int, target)
 	dp[0] = 0
+	tp := []int{1}
 	result := make([][]int, 0)
 
-	right++
-	tp := []int{1}
 	for right < len(dp) {
-		dp[right] = dp[right-1] + right
+		if dp[right] == 0 {
+			dp[right] = dp[right-1] + right
+		}
+
 		if dp[right]-dp[left] < target {
 			right++
 			tp = append(tp, right)
@@ -38,12 +40,9 @@ func findContinuousSequence(target int) [][]int {
 			left++
 			tp = tp[1:]
 		} else {
+			result = append(result, tp)
 			right++
 			tp = append(tp, right)
-			cp := make([]int, len(tp)-1)
-			copy(cp, tp)
-			result = append(result, cp)
-
 		}
 	}
 
