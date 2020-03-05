@@ -43,11 +43,3 @@ func handle21(matrics [][]int, total int) int {
 
 	return dp[total-1][total-1]
 }
-
-func min(left, right int) int {
-	if left < right {
-		return left
-	}
-
-	return right
-}
