@@ -48,3 +48,29 @@ func findContinuousSequence(target int) [][]int {
 
 	return result
 }
+
+// 滑动窗口法，少了扩张，多了收缩
+func findContinuousSequenceFunc2(target int) [][]int {
+	left, right := 1, 1
+
+	sum := 0
+	tp := make([]int, 0)
+	res := make([][]int, 0)
+
+	for right != target {
+		if sum <= target {
+			if sum == target {
+				res = append(res, tp)
+			}
+			sum += right
+			tp = append(tp, right)
+			right++
+		} else if sum > target {
+			sum -= left
+			tp = tp[1:]
+			left++
+		}
+	}
+
+	return res
+}
