@@ -1,25 +1,28 @@
 package queue
 
-type Queue struct {
-	length int
-	queue []int
+type queue []int
+
+func newQueue() *queue {
+	q := queue(make([]int, 0))
+	return &q
 }
 
-// 新建一个队列
-func NewQueue() *Queue {
-	return &Queue{length: 0, queue: make([]int, 0)}
+func (q *queue) Enqueue(i int) {
+	*q = append(*q, i)
 }
 
-// Enqueue - 入队
-func (this *Queue)Enqueue(i int) {
-	this.queue = append(this.queue, i)
-	this.length++
+func (q *queue) Dequeue() {
+	*q = (*q)[1:]
 }
 
-// Outputqueue - 出队
-func (this *Queue)Outputqueue() int {
-	result := this.queue[0]
-	this.queue = this.queue[1:]
-	this.length--
-	return result
+func (q *queue) Get() int {
+	return (*q)[0]
+}
+
+func (q *queue) Empty() bool {
+	return len(*q) == 0
+}
+
+func (q *queue) Length() int {
+	return len(*q)
 }
