@@ -1,21 +1,26 @@
 package stack
 
-type Stack struct {
-	length int
-	stack []int
+type stack []int
+
+func newStack() *stack {
+	s := stack(make([]int, 0))
+	return &s
 }
 
-// Push - 入栈
-func (this *Stack)Push(i int) {
-	this.length++
-	this.stack = append(this.stack, i)
+func (s *stack) Push(i int) {
+	*s = append(*s, i)
 }
 
-// Pop - 弹栈
-func (this *Stack)Pop() int {
-	lastIndex := this.length - 1
-	val := this.stack[lastIndex]
-	this.stack = this.stack[:lastIndex]
-	this.length--
-	return val
+func (s *stack) Pop() int {
+	result := (*s)[len(*s)-1]
+	*s = (*s)[:len(*s)-1]
+	return result
+}
+
+func (s *stack) Get() int {
+	return (*s)[len(*s)-1]
+}
+
+func (s *stack) IsEmpty() bool {
+	return len(*s) == 0
 }

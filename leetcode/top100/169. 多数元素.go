@@ -32,5 +32,3 @@ func majorityElement(nums []int) int {
 
 	return maxNum
 }
-
-// TODO: 146 155未完成，明天继续
