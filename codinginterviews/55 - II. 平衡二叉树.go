@@ -55,11 +55,3 @@ func depth(root *TreeNode) int {
 	left, right := depth(root.Left), depth(root.Right)
 	return max(left, right) + 1
 }
-
-func max(left, right int) int {
-	if left > right {
-		return left
-	}
-
-	return right
-}
