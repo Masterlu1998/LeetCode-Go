@@ -41,9 +41,7 @@ func maximalRectangle(matrix [][]byte) int {
 			for j := k; j >= 0; j-- {
 				last = min(cache[j][i], last)
 				temp := last * (k + 1 - j)
-				if temp > maxArea {
-					maxArea = temp
-				}
+				maxArea = max(maxArea, temp)
 			}
 		}
 
